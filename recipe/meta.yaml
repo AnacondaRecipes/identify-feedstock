@@ -46,6 +46,8 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: File identification library for Python
+  dev_url: https://github.com/pre-commit/identify
+  doc_url: https://github.com/pre-commit/identify
 
 extra:
   recipe-maintainers:
