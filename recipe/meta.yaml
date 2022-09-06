@@ -31,12 +31,14 @@ test:
   imports:
     - identify
   requires:
+    - pip
     - pytest
   source_files:
     - LICENSE
     - tests
     - setup.py
   commands:
+    - pip check
     - identify-cli --help
     - pytest tests
 
