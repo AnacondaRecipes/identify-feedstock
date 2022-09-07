@@ -43,7 +43,9 @@ test:
     - pytest tests  # [not win]
     # Some tests fail on Windows because they assume a Unix
     # file system, so they shouldn't lead to a hard fail
-    - pytest tests || 1  # [win]
+    # `pytest tests || 1` does not seem to work, so we need
+    # to start a new subshell to just exit
+    - pytest tests || cmd /c "exit /B 0"  # [win]
 
 about:
   home: https://github.com/pre-commit/identify
