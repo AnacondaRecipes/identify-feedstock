@@ -1,5 +1,5 @@
 {% set name = "identify" %}
-{% set version = "2.5.5" %}
+{% set version = "2.6.18" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/pre-commit/identify/archive/v{{ version }}.tar.gz
-  sha256: 76aa25108ec298193478735af763f761800a5c7d6aba43243018331177e0a798
+  sha256: 1b4d68f5f7267f2b9c4637379742fb6764abae63b5c053ac30c1ded252a2525b
 
 build:
   number: 0
-  skip: True  # [py<37]
-  script: python -m pip install . --no-deps --ignore-installed
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
   entry_points:
     - identify-cli = identify.cli:main
 
