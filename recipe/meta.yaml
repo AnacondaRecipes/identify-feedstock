@@ -1,31 +1,30 @@
 {% set name = "identify" %}
-{% set version = "2.5.5" %}
+{% set version = "2.6.19" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/pre-commit/identify/archive/v{{ version }}.tar.gz
-  sha256: 76aa25108ec298193478735af763f761800a5c7d6aba43243018331177e0a798
+  url: https://github.com/pre-commit/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: b939a2e57f1085886aab677c7b78d07ca02bf1186c8aeaa12021b596229e5195
 
 build:
   number: 0
-  skip: True  # [py<37]
-  script: python -m pip install . --no-deps --ignore-installed
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed
   entry_points:
     - identify-cli = identify.cli:main
+  skip: true  # [py<310]
 
 requirements:
   host:
-    - python
     - pip
-    - setuptools
-    - wheel
-  run:
-    - ukkonen
     - python
+    - wheel
+    - setuptools
+  run:
+    - python
+    - ukkonen
 
 test:
   imports:
@@ -49,10 +48,12 @@ test:
 
 about:
   home: https://github.com/pre-commit/identify
+  summary: File identification library for Python
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: File identification library for Python
+  description: |
+    File identification library for Python.
   dev_url: https://github.com/pre-commit/identify
   doc_url: https://github.com/pre-commit/identify
 
