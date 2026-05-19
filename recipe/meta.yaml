@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed
   entry_points:
     - identify-cli = identify.cli:main
   skip: true  # [py<310]
